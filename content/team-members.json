@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Lead Engineer",
+    "role": "Lead Product Engineer & Memory Architect",
+    "angle": "Outcome-Linked Memory Architecture with Hindsight",
+    "articleFile": "content/articles/article.md",
+    "socialFile": "content/social/linkedin-post.md"
+  },
+  {
+    "name": "Backend Architect",
+    "role": "Systems Architect",
+    "angle": "Deterministic Document IDs and Scoped Memory Taxonomy",
+    "articleFile": "content/articles/member-02-article.md",
+    "socialFile": "content/social/member-02-post.md"
+  },
+  {
+    "name": "UX Engineer",
+    "role": "Product UX & Frontend Designer",
+    "angle": "Evidence-First Interface Design: Replacing Chatbots with Traceable Briefs",
+    "articleFile": "content/articles/member-03-article.md",
+    "socialFile": "content/social/member-03-post.md"
+  }
+]
