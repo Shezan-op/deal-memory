@@ -1,72 +1,70 @@
-# DEALMEMORY
+# DealMemory
 
-> “Every sales conversation becomes experience the next conversation can learn from.”
-
-DealMemory is an outcome-learning deal intelligence system powered by [Hindsight](https://github.com/vectorize-io/hindsight). Instead of treating sales calls as isolated summarization exercises, DealMemory turns every interaction, action attempted, and observed outcome into durable organizational memory that actively shapes future deal preparation.
-
----
-
-## The Problem: Stateless Sales AI
-
-Traditional sales AI tools operate on a primitive model:
-```
-Call Transcript → LLM Summary → CRM Note
-```
-When an account executive prepares for the next call, a standard RAG chatbot retrieves unstructured notes and outputs generic advice: *"Highlight ROI and offer a 15% discount if they express hesitation."*
-
-If offering that discount in call #2 caused the prospect to disengage because their real issue was engineering migration capacity, a stateless LLM will still recommend that exact same discount in call #5. It has zero concept of outcomes.
+> **Outcome-Learning Deal Intelligence via Vectorize Hindsight**  
+> *“Every sales conversation becomes experience the next conversation can learn from.”*
 
 ---
 
-## The DealMemory Architecture
+## What is DealMemory?
 
-DealMemory closes the feedback loop:
-```
-Sales Conversation
-       ↓
-Memory Retained (Deterministic Doc ID)
-       ↓
-Action Taken (e.g., 30-Day Migration Roadmap)
-       ↓
-Outcome Observed (PROGRESSED / STALLED / LOST)
-       ↓
-Retain Outcome (Linked directly to interaction)
-       ↓
-Consolidation & Reflect (Observed Patterns Formed)
-       ↓
-Better Future Action
-```
+DealMemory is an AI-powered deal intelligence application for enterprise sales teams. In long, multi-stakeholder sales cycles, deals often stall because valuable context—such as objections, stakeholder priorities, and past commitments—gets forgotten between calls.
 
-When an account executive prepares for a meeting, DealMemory doesn't guess—it presents an **evidence-backed preparation brief** citing verified historical interactions.
+Standard sales AI tools treat every conversation in isolation. DealMemory fixes this by linking attempted sales actions directly to downstream deal outcomes (`PROGRESSED`, `STALLED`, `LOST`, `WON`). Powered by **Vectorize Hindsight**, DealMemory builds persistent organizational memory that equips sales reps before every meeting with evidence-backed strategy briefs grounded in verified historical outcomes.
 
 ---
 
-## Memory ON vs. Memory OFF
+## Why Does It Exist?
 
-On our flagship demo account (**Acme Corp**, $120k ARR, Technical Validation stage):
+Enterprise B2B sales cycles span 3 to 12 months across dozens of meetings. Stateless AI assistants frequently recommend generic tactics (e.g. *"Offer a 15–20% discount if the prospect expresses hesitation"*), unaware that the prospect's CTO already explicitly rejected discounts because engineering migration bandwidth was the real blocker.
 
-| State | Agent Recommendation | Why / Evidence |
-| :--- | :--- | :--- |
-| **Memory OFF** *(Stateless)* | "Highlight product features and offer a 15-20% discount if the client pushes back on implementation." | ❌ **Fatal Flaw:** Zero memory that Acme already rejected discounts on Oct 24, which stalled the deal. |
-| **Memory ON** *(Hindsight)* | "Do NOT lead with discounts. On Oct 24, a 15% discount caused the account to stall. Progress unlocked on Nov 02 when we provided an engineer-led migration roadmap. Lead with technical milestones and attach the SOC2 bridge letter." | ✅ **Evidence-Linked:** Cites doc `deal:acme-001:interaction:002` (stalled) and `004` (progressed). |
-
----
-
-## Core Features
-
-1. **Outcome-Linked Intelligence**: Tracks not just what was said, but what was tried, why it was tried, and what happened after.
-2. **Deterministic Document IDs**: Uses immutable paths (`deal:{dealId}:interaction:{interactionId}` and `:outcome`) to ensure idempotent Hindsight ingestion.
-3. **Contradiction Detection**: Flags conflicting statements across calls (e.g., CTO stated $100k budget vs. CFO cited $85k cap) so reps can validate discrepancies before quoting terms.
-4. **Interactive Judge Demo (`/demo`)**: A 60-second guided flow demonstrating Problem → Memory OFF → Memory ON → Live Ingestion → Updated Learning.
-5. **Auditable Evidence Layer**: Every recommendation exposes supporting evidence, learned patterns, limitations, and counter-evidence.
+DealMemory ensures that:
+1. Past objections and stakeholder concerns are never forgotten.
+2. The AI actively warns reps against repeating tactics that previously stalled the deal.
+3. Successful sales plays are remembered and transferred across the entire sales team.
 
 ---
 
-## Quickstart
+## What Does It Do?
 
-### Prerequisites
-- Node.js 20+
-- npm or pnpm
+- **Pre-Meeting Intelligence Briefs**: Generates structured preparation briefs citing specific historical interaction IDs.
+- **Memory ON vs. Memory OFF Comparison**: An interactive toggle demonstrating the stark difference between stateless LLM amnesia and persistent Hindsight memory.
+- **Outcome Feedback Loop**: Directly connects actions taken on calls to downstream deal velocity (`PROGRESSED` vs. `STALLED`).
+- **Cross-Deal Knowledge Transfer**: Automatically recalls successful strategies from completed deals when similar objections arise on new opportunities.
+- **Chronological Deal Timeline**: Visualizes meetings, notes, objections, and logged outcomes in a single audit trail.
+
+---
+
+## How Hindsight Fits In
+
+Vectorize Hindsight serves as DealMemory's external cognitive memory layer:
+- **Retain (`POST /banks/{id}/documents`)**: Ingests meeting transcripts, stakeholder roles, objections, and verified outcome signals using deterministic document IDs.
+- **Recall (`POST /banks/{id}/recall`)**: Retrieves tag-scoped prior experiences relevant to the current deal stage and open objections.
+- **Reflect (`POST /banks/{id}/reflect`)**: Synthesizes causal patterns across multiple interactions to evaluate what moves the needle versus what stalls the deal.
+
+---
+
+## Key Documentation & Interactive Demos
+
+| Resource | Description |
+| :--- | :--- |
+| 📖 **[DEALMEMORY-SOURCE-OF-TRUTH.md](./DEALMEMORY-SOURCE-OF-TRUTH.md)** | **Primary Authoritative Specification**: Complete 35-section internal source of truth covering architecture, data flow, memory lifecycle, security, and component breakdown. |
+| 🛠️ **[internal-setup-guide.md](./internal-setup-guide.md)** | **Operational Runbook**: Installation, environment configuration, testing workflows, deployment procedures, and troubleshooting. |
+| 🎮 **[gamified.html](./gamified.html)** | **Interactive Sales Simulation**: Single-file, zero-dependency visual walkthrough showing DealMemory in action during a live enterprise deal. |
+
+---
+
+## Tech Stack
+
+- **Framework**: Next.js 16.3.6 (App Router, Turbopack, React Server Components)
+- **UI & Styling**: React 19.2.8, Tailwind CSS v4
+- **Language**: TypeScript 5.x (Strict mode)
+- **Memory Engine**: Vectorize Hindsight Client (`@vectorize-io/hindsight-client` v0.10.1)
+- **Validation**: Zod v3.25.76
+- **Test Suite**: Vitest v5.0.2 (57 passing tests)
+
+---
+
+## Quick Start
 
 ### 1. Clone & Install
 ```bash
@@ -75,63 +73,48 @@ cd deal-memory
 npm install
 ```
 
-### 2. Environment Configuration
-Copy `.env.example` to `.env.local`:
+### 2. Environment Setup
 ```bash
 cp .env.example .env.local
 ```
-Configure your Hindsight endpoint:
-```env
-HINDSIGHT_BASE_URL="http://localhost:8888"
-HINDSIGHT_API_KEY=""
-HINDSIGHT_BANK_ID="deal-memory-demo"
-```
 
-### 3. Seed the Dataset
-Populate 3 companies, 7 stakeholders, and 12 rich B2B interactions into Hindsight:
-```bash
-npm run seed
-```
-
-### 4. Run the Dev Server
+### 3. Start Development Server
 ```bash
 npm run dev
 ```
-Open [http://localhost:3000](http://localhost:3000) to inspect the Deal Inbox, or visit [http://localhost:3000/demo](http://localhost:3000/demo) for the interactive guided walkthrough.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
----
+- To run the **Interactive Guided Demo**, navigate to `http://localhost:3000/demo`.
+- To open the **Single-File Simulation**, open `gamified.html` in any browser or visit `http://localhost:3000/gamified.html`.
 
-## Commands
-
+### 4. Run Automated Verification
 ```bash
-npm run test           # Run Vitest unit tests
-npm run typecheck      # Validate TypeScript types
-npm run seed           # Ingest fixture data into Hindsight
-npm run content:check  # Validate submission articles, word counts, and links
-npm run audit          # Run complete end-to-end repository audit
+npm run test         # Run 57 automated Vitest unit & security tests
+npm run typecheck    # Validate strict TypeScript compilation
+npm run docs:check   # Verify documentation integrity
 ```
 
 ---
 
-## Documentation Index
+## Project Structure
 
-- [Product Requirements Document (PRD)](./docs/PRD.md)
-- [System Design & Sequence Diagrams](./docs/SYSTEM-DESIGN.md)
-- [Architecture Overview](./docs/ARCHITECTURE.md)
-- [Hindsight Integration Deep Dive](./docs/HINDSIGHT-DESIGN.md)
-- [Memory Taxonomy & Document ID Specification](./docs/MEMORY-TAXONOMY.md)
-- [Synthetic Dataset Specification](./docs/DATASET-DESIGN.md)
-- [API Route Documentation](./docs/API.md)
-- [Security & Prompt Injection Defenses](./docs/SECURITY.md)
-- [Threat Model](./docs/THREAT-MODEL.md)
-- [Memory Evaluation Scenarios](./docs/MEMORY-EVALUATION.md)
-- [Demo Presentation Script (60–120s)](./docs/DEMO-SCRIPT.md)
-- [Runbook & Deployment Guide](./docs/RUNBOOK.md)
-- [Content Submission Workspace & Guide](./docs/CONTENT-SUBMISSION.md)
-- [Architecture Decision Records (ADRs)](./docs/adr/)
+```text
+dealmemory/
+├── DEALMEMORY-SOURCE-OF-TRUTH.md  # Master architectural source of truth
+├── README.md                      # Public introduction and quick start
+├── internal-setup-guide.md        # Operations, deployment, and runbook manual
+├── gamified.html                  # Standalone interactive sales simulation
+├── public/                        # Static assets and public simulation mirror
+├── src/
+│   ├── app/                       # Next.js App Router (pages and /api routes)
+│   ├── components/                # Reusable UI components
+│   └── lib/                       # Domain logic, Hindsight provider, in-memory store
+├── tests/                         # Vitest test suites (security, chaos, domain)
+└── docs/                          # Architecture decision records & security matrices
+```
 
 ---
 
 ## License
 
-Apache-2.0 © 2026 DealMemory Contributors.
+Apache-2.0 License. See [LICENSE](./LICENSE) for details.

@@ -1,4 +1,4 @@
-import { Interaction, InteractionOutcome, EvidenceItem, DealPreparationBrief } from '../domain/models';
+import { Interaction, InteractionOutcome, EvidenceItem } from '../domain/models';
 
 export interface MemoryRecallOptions {
   types?: Array<'world' | 'experience' | 'observation'>;

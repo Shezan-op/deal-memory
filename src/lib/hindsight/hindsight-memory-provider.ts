@@ -184,6 +184,7 @@ export class HindsightMemoryProvider implements MemoryProvider {
           context: `Deal ${interaction.dealId} interaction: ${interaction.context}`,
           timestamp: new Date(interaction.timestamp),
           documentId: docId,
+          tags,
           metadata: {
             interaction_id: interaction.id,
             deal_id: interaction.dealId,

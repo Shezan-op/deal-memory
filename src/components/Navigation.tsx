@@ -53,6 +53,12 @@ export function Navigation() {
           >
             Learning Loop
           </Link>
+          <a
+            href="/gamified.html"
+            className="px-3 py-1.5 text-[#111111] hover:text-[#787774] transition-colors"
+          >
+            Simulation
+          </a>
           <Link
             href="/demo"
             className="ml-2 px-3 py-1.5 bg-[#111111] text-[#FFFFFF] rounded text-xs hover:bg-[#333333] transition-all"

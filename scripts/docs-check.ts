@@ -30,6 +30,7 @@ checkDocExists('docs/DOCUMENTATION-IMPACT-MATRIX.md');
 checkDocExists('docs/templates/SECURITY-CHANGE-TEMPLATE.md');
 checkDocExists('.github/PULL_REQUEST_TEMPLATE.md');
 checkDocExists('.github/ISSUE_TEMPLATE/security.md');
+checkDocExists('internal-setup-guide.md');
 
 // 2. Security Documentation Suite
 const securityDocs = [

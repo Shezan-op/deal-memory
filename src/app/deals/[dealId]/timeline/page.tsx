@@ -34,7 +34,7 @@ export default async function DealTimelinePage({
       </div>
 
       <div className="relative border-l border-[#EAEAEA] ml-4 pl-6 space-y-8">
-        {interactions.map((interaction, index) => {
+        {interactions.map((interaction) => {
           const outcome = interaction.outcome;
           const isProgress =
             outcome?.outcomeType === 'PROGRESSED' || outcome?.outcomeType === 'NEXT_STEP_CONFIRMED';

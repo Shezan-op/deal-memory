@@ -36,6 +36,10 @@ check("PROJECT", ".env.example exists", () => fs.existsSync(".env.example"));
 check("PROJECT", "License exists (Apache-2.0)", () => fs.existsSync("LICENSE"));
 check("PROJECT", "Changelog exists", () => fs.existsSync("CHANGELOG.md"));
 check("PROJECT", "Contributing guide exists", () => fs.existsSync("CONTRIBUTING.md"));
+check("PROJECT", "internal-setup-guide.md exists and is substantive", () => {
+  const content = fs.readFileSync("internal-setup-guide.md", "utf-8");
+  return content.length > 1000 && content.includes("Hindsight");
+});
 check("PROJECT", "README.md exists and is substantive", () => {
   const content = fs.readFileSync("README.md", "utf-8");
   return content.length > 500 && content.includes("Hindsight");

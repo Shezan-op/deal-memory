@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'next/navigation';
 import { DealPreparationBrief } from '@/lib/domain/models';
 
@@ -12,9 +12,9 @@ export default function PrepareNextInteractionPage() {
   const [loading, setLoading] = useState(false);
   const [brief, setBrief] = useState<DealPreparationBrief | null>(null);
   const [showEvidence, setShowEvidence] = useState(false);
-  const [customGoal, setCustomGoal] = useState('');
+  const customGoal = '';
 
-  const fetchBrief = async (withMemory: boolean) => {
+  const fetchBrief = useCallback(async (withMemory: boolean) => {
     setLoading(true);
     try {
       const res = await fetch(`/api/deals/${dealId}/prepare`, {
@@ -32,13 +32,13 @@ export default function PrepareNextInteractionPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [dealId, customGoal]);
 
   useEffect(() => {
     if (dealId) {
-      fetchBrief(memoryEnabled);
+      void fetchBrief(memoryEnabled);
     }
-  }, [dealId, memoryEnabled]);
+  }, [dealId, memoryEnabled, fetchBrief]);
 
   return (
     <div className="space-y-10">
