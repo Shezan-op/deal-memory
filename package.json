@@ -9,13 +9,19 @@
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
+    "test:unit": "vitest run tests/unit",
+    "test:integration": "vitest run tests/security",
+    "test:e2e": "vitest run",
     "security:smoke": "vitest run tests/security/access-control.test.ts tests/security/rate-limit.test.ts",
+    "security:secrets": "tsx scripts/scan-secrets.ts",
+    "security:deps": "npm audit --audit-level=high",
     "security:audit": "vitest run tests/security/",
     "security:baseline": "tsx scripts/security-baseline.ts",
     "docs:check": "tsx scripts/docs-check.ts",
     "seed": "tsx scripts/seed-demo.ts",
     "content:check": "tsx scripts/check-content.ts",
-    "audit": "tsx scripts/final-audit.ts"
+    "audit": "tsx scripts/final-audit.ts",
+    "final:audit": "tsx scripts/final-audit.ts"
   },
   "dependencies": {
     "@rolldown/binding-win32-x64-msvc": "^1.2.11",

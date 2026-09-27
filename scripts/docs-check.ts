@@ -55,6 +55,12 @@ const securityDocs = [
   'docs/security/SECURITY-EXCEPTIONS.md',
   'docs/security/SECURITY-MAINTENANCE.md',
   'docs/security/GITHUB-SECURITY-SETUP.md',
+  'docs/security/BASELINE-SNAPSHOT.md',
+  'docs/security/ATTACK-SURFACE-MAP.md',
+  'docs/security/SECURITY-INVARIANTS.md',
+  'docs/security/CHAOS-MATRIX.md',
+  'docs/security/HINDSIGHT-SECURITY.md',
+  'docs/security/MAINTENANCE-POLICY.md',
   'docs/security/FINAL-AUDIT.md',
 ];
 
