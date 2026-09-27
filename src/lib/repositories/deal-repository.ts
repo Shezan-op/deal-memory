@@ -36,6 +36,20 @@ export class DealRepository {
     for (const i of DEMO_INTERACTIONS) this.interactions.set(i.id, { ...i });
   }
 
+  resetToSeed(): void {
+    this.reset();
+  }
+
+  addDeal(deal: Deal): Deal {
+    this.deals.set(deal.id, { ...deal });
+    return deal;
+  }
+
+  addCompany(company: Company): Company {
+    this.companies.set(company.id, { ...company });
+    return company;
+  }
+
   getDeals(): Deal[] {
     return Array.from(this.deals.values());
   }

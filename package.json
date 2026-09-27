@@ -9,6 +9,10 @@
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
+    "security:smoke": "vitest run tests/security/access-control.test.ts tests/security/rate-limit.test.ts",
+    "security:audit": "vitest run tests/security/",
+    "security:baseline": "tsx scripts/security-baseline.ts",
+    "docs:check": "tsx scripts/docs-check.ts",
     "seed": "tsx scripts/seed-demo.ts",
     "content:check": "tsx scripts/check-content.ts",
     "audit": "tsx scripts/final-audit.ts"
