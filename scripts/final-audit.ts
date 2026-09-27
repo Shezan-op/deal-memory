@@ -47,35 +47,18 @@ check("PROJECT", "README.md exists and is substantive", () => {
 
 // 2. DOCUMENTATION
 const requiredDocs = [
-  "docs/PRD.md",
-  "docs/SYSTEM-DESIGN.md",
   "docs/ARCHITECTURE.md",
-  "docs/HINDSIGHT-DESIGN.md",
-  "docs/MEMORY-TAXONOMY.md",
-  "docs/DATASET-DESIGN.md",
   "docs/API.md",
-  "docs/SECURITY.md",
-  "docs/THREAT-MODEL.md",
-  "docs/MEMORY-EVALUATION.md",
-  "docs/DEMO-SCRIPT.md",
-  "docs/RUNBOOK.md",
-  "docs/CONTENT-SUBMISSION.md",
-  "docs/CONTENT-GUIDE-INTEGRATION.md",
-  "docs/HINDSIGHT-PROMPT-REVIEW.md",
-  "docs/HACKATHON-ALIGNMENT.md",
-  "docs/adr/ADR-001-Hindsight-as-Memory-Layer.md",
-  "docs/adr/ADR-002-Bank-Isolation.md",
-  "docs/adr/ADR-003-Outcome-Linked-Memory.md",
-  "docs/adr/ADR-004-Evidence-First-Recommendations.md",
-  "docs/adr/ADR-005-No-Secondary-Database-for-MVP.md",
-  "docs/adr/ADR-006-Tight-Scope.md",
-  "docs/adr/ADR-007-Memory-On-Off-Demonstration.md",
-  "docs/adr/ADR-008-Synthetic-Dataset-Design.md"
+  "docs/ADR.md",
+  "docs/DEMO-GUIDE.md",
+  "docs/SECURITY-MANUAL.md",
+  "docs/RUNBOOK.md"
 ];
 
 for (const doc of requiredDocs) {
   check("DOCUMENTATION", `Exists: ${doc}`, () => fs.existsSync(doc));
 }
+check("DOCUMENTATION", "Redundant docs safely archived in docs-archive/", () => fs.existsSync("docs-archive"));
 
 // 3. FRONTEND UI & ROUTES
 const requiredPages = [

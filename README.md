@@ -47,7 +47,11 @@ Vectorize Hindsight serves as DealMemory's external cognitive memory layer:
 
 | Resource | Description |
 | :--- | :--- |
-| 📖 **[DEALMEMORY-SOURCE-OF-TRUTH.md](./DEALMEMORY-SOURCE-OF-TRUTH.md)** | **Primary Authoritative Specification**: Complete 35-section internal source of truth covering architecture, data flow, memory lifecycle, security, and component breakdown. |
+| 🏗️ **[docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md)** | **System Architecture & Design**: Hindsight memory integration, sequence diagrams, 3-tier memory taxonomy, and dataset design. |
+| 🔌 **[docs/API.md](./docs/API.md)** | **REST API Reference**: Complete endpoint contracts, request/response JSON schemas, rate limits, and error handling. |
+| 📜 **[docs/ADR.md](./docs/ADR.md)** | **Architecture Decision Records**: Consolidated ADR-001 through ADR-008 documenting core design choices. |
+| 🎯 **[docs/DEMO-GUIDE.md](./docs/DEMO-GUIDE.md)** | **Demo Walkthrough & Evaluation**: Step-by-step presentation script, pre-flight checklist, and Memory ON/OFF benchmarks. |
+| 🛡️ **[docs/SECURITY-MANUAL.md](./docs/SECURITY-MANUAL.md)** | **Enterprise Security Standard**: OWASP ASVS v4.0.3 matrix, STRIDE threat model, prompt injection defense, and incident response. |
 | 🛠️ **[internal-setup-guide.md](./internal-setup-guide.md)** | **Operational Runbook**: Installation, environment configuration, testing workflows, deployment procedures, and troubleshooting. |
 | 🎮 **[gamified.html](./gamified.html)** | **Interactive Sales Simulation**: Single-file, zero-dependency visual walkthrough showing DealMemory in action during a live enterprise deal. |
 

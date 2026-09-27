@@ -19,55 +19,32 @@ function checkDocExists(relativePath: string) {
   }
 }
 
-// 1. Core Documentation
+// 1. Root & Core Operational Documentation
 checkDocExists('README.md');
 checkDocExists('SECURITY.md');
-checkDocExists('docs/API.md');
-checkDocExists('docs/ARCHITECTURE.md');
-checkDocExists('docs/HINDSIGHT-DESIGN.md');
-checkDocExists('docs/RUNBOOK.md');
-checkDocExists('docs/DOCUMENTATION-IMPACT-MATRIX.md');
-checkDocExists('docs/templates/SECURITY-CHANGE-TEMPLATE.md');
-checkDocExists('.github/PULL_REQUEST_TEMPLATE.md');
-checkDocExists('.github/ISSUE_TEMPLATE/security.md');
 checkDocExists('internal-setup-guide.md');
+checkDocExists('CHANGELOG.md');
+checkDocExists('CONTRIBUTING.md');
+checkDocExists('LICENSE');
 
-// 2. Security Documentation Suite
-const securityDocs = [
-  'docs/security/README.md',
-  'docs/security/SECURITY-STANDARDS.md',
-  'docs/security/INITIAL-AUDIT.md',
-  'docs/security/THREAT-MODEL.md',
-  'docs/security/ASVS-CONTROL-MATRIX.md',
-  'docs/security/AI-SECURITY.md',
-  'docs/security/AGENTIC-SECURITY.md',
-  'docs/security/SECURITY-BASELINE.md',
-  'docs/security/DATA-FLOW.md',
-  'docs/security/DATA-RETENTION.md',
-  'docs/security/LOGGING-REDACTION.md',
-  'docs/security/DEPENDENCY-POLICY.md',
-  'docs/security/INCIDENT-RESPONSE.md',
-  'docs/security/SECRET-ROTATION.md',
-  'docs/security/SBOM.md',
-  'docs/security/DEMO-SECURITY-CHECKLIST.md',
-  'docs/security/SECURITY-TEST-PLAN.md',
-  'docs/security/SECURITY-TEST-REPORT.md',
-  'docs/security/SECURITY-CHANGELOG.md',
-  'docs/security/SECURITY-EXCEPTIONS.md',
-  'docs/security/SECURITY-MAINTENANCE.md',
-  'docs/security/GITHUB-SECURITY-SETUP.md',
-  'docs/security/BASELINE-SNAPSHOT.md',
-  'docs/security/ATTACK-SURFACE-MAP.md',
-  'docs/security/SECURITY-INVARIANTS.md',
-  'docs/security/CHAOS-MATRIX.md',
-  'docs/security/HINDSIGHT-SECURITY.md',
-  'docs/security/MAINTENANCE-POLICY.md',
-  'docs/security/FINAL-AUDIT.md',
+// 2. Consolidated Technical Documentation Suite
+const coreDocs = [
+  'docs/ARCHITECTURE.md',
+  'docs/API.md',
+  'docs/ADR.md',
+  'docs/DEMO-GUIDE.md',
+  'docs/SECURITY-MANUAL.md',
+  'docs/RUNBOOK.md'
 ];
 
-for (const doc of securityDocs) {
+for (const doc of coreDocs) {
   checkDocExists(doc);
 }
+
+// 3. GitHub Templates & Archive
+checkDocExists('.github/PULL_REQUEST_TEMPLATE.md');
+checkDocExists('.github/ISSUE_TEMPLATE/security.md');
+checkDocExists('docs-archive');
 
 console.log('\n----------------------------------------------------');
 console.log(`DOCS SUMMARY: ${passedDocs}/${totalDocs} documents verified.`);
@@ -77,5 +54,5 @@ if (passedDocs !== totalDocs) {
   console.error('\nDocumentation consistency check failed! Some files are missing.');
   process.exit(1);
 } else {
-  console.log('\nAll documentation files exist and are verified!\n');
+  console.log('\nAll core documentation files exist and are verified!\n');
 }
