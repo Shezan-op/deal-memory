@@ -84,22 +84,27 @@ function main() {
   console.log("   DEALMEMORY CONTENT SUBMISSION AUDIT   ");
   console.log("=========================================");
 
-  const articlePath = path.join(process.cwd(), "content/articles/article.md");
-  const socialPath = path.join(process.cwd(), "content/social/linkedin-post.md");
-  const videoScriptPath = path.join(process.cwd(), "content/video/video-script.md");
-
+  const teamMembers = JSON.parse(fs.readFileSync(path.join(process.cwd(), "content/team-members.json"), "utf-8"));
   let allPassed = true;
 
-  // 1. Check Technical Article (800 - 1500 words, no forbidden words)
-  const articleOk = checkFile(articlePath, 800, 1500, Infinity, true);
-  const linksOk = checkArticleLinks(articlePath);
-  if (!articleOk || !linksOk) allPassed = false;
+  for (const member of teamMembers) {
+    console.log(`\n=========================================`);
+    console.log(`Auditing assets for: ${member.name} (${member.role})`);
+    console.log(`Angle: ${member.angle}`);
+    console.log(`=========================================`);
 
-  // 2. Check Social Post (< 800 chars, no forbidden words)
-  const socialOk = checkFile(socialPath, 0, Infinity, 800, true);
-  if (!socialOk) allPassed = false;
+    const artPath = path.join(process.cwd(), member.articleFile);
+    const socPath = path.join(process.cwd(), member.socialFile);
 
-  // 3. Check Video Script exists
+    const artOk = checkFile(artPath, 800, 1500, Infinity, true);
+    const linksOk = checkArticleLinks(artPath);
+    if (!artOk || !linksOk) allPassed = false;
+
+    const socOk = checkFile(socPath, 0, Infinity, 800, true);
+    if (!socOk) allPassed = false;
+  }
+
+  const videoScriptPath = path.join(process.cwd(), "content/video/video-script.md");
   const videoOk = checkFile(videoScriptPath, 100, 1000, Infinity, false);
   if (!videoOk) allPassed = false;
 
